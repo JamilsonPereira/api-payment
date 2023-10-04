@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class PaymentService {
     @Autowired
@@ -32,13 +31,12 @@ public class PaymentService {
         Payment result = paymentRepository.save(mapperService.mapperDtoToDomain(pay));
         Gson gson = new Gson();
         String message = gson.toJson(result);
-        logger.info("Send message for topic kafka");
+        logger.info("Send message for kafka topic");
         kafkaProducer.send("notifications.payment.request", null, message);
     }
 
     public List<PaymentResponse> findAllPayment() {
+        logger.info("Search all Payment");
         return mapperService.mapperListDomainToListDto(paymentRepository.findAll());
     }
-
-
 }

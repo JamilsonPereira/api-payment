@@ -8,19 +8,22 @@ import java.time.LocalDate;
 
 public class PaymentResponse {
 
-    @JsonProperty("Payment_Id")
+    @JsonProperty("payment-id")
     private Long payment_id;
 
-    @JsonProperty("Customer_Id")
+    @JsonProperty("customer-id")
     private Long customer_id;
 
-    @JsonProperty("Value_pay")
+    @JsonProperty("debt-id")
+    private Long debt_id;
+
+    @JsonProperty("amount-payd")
     private BigDecimal value;
 
-    @JsonProperty("Description")
+    @JsonProperty("description")
     private String description;
 
-    @JsonProperty("Payment_Method")
+    @JsonProperty("form-payment")
     private String paymentMethod;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -40,6 +43,14 @@ public class PaymentResponse {
 
     public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public Long getDebt_id() {
+        return debt_id;
+    }
+
+    public void setDebt_id(Long debt_id) {
+        this.debt_id = debt_id;
     }
 
     public BigDecimal getValue() {

@@ -26,7 +26,7 @@ public class PaymentController {
         paymentService.createPay(payment);
     }
 
-    @ApiOperation(value = "Busca uma lista com palindromos")
+    @ApiOperation(value = "Search List historic with payments")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<PaymentResponse> buscarPalindromosGerados() {

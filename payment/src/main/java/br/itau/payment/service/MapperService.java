@@ -22,6 +22,8 @@ public class MapperService {
             paymentResponse.setPaymentMethod(payment.getPaymentMethod());
             paymentResponse.setDatePayment(payment.getDatePayment());
             paymentResponse.setDescription(payment.getDescription());
+            paymentResponse.setDebt_id(payment.getDebtId());
+
             paymentResponses.add(paymentResponse);
         }
         return paymentResponses;
@@ -36,16 +38,5 @@ public class MapperService {
         domain.setDebtId(request.getDebt_id());
 
         return domain;
-    }
-
-    public PaymentResponse mapperListDomainToListDto(Payment model) {
-        PaymentResponse paymentResponse = new PaymentResponse();
-        paymentResponse.setPayment_id(model.getPayment_id());
-        paymentResponse.setPaymentMethod(model.getPaymentMethod());
-        paymentResponse.setCustomer_id(model.getCustomerId());
-        paymentResponse.setDescription(model.getDescription());
-        paymentResponse.setValue(model.getValue());
-
-        return paymentResponse;
     }
 }
