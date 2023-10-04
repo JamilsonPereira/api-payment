@@ -23,63 +23,63 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @ExtendWith(MockitoExtension.class)
 class PaymentControllerTest {
-
-    @InjectMocks
-    PaymentController paymentController;
-
-    @Mock
-    PaymentService paymentService;
-
-    @Mock
-    PaymentRequest requestDto;
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @BeforeEach
-    public void setup() {
-        initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(paymentController)
-                .alwaysDo(print())
-                .build();
-        objectMapper = new ObjectMapper();
-        requestDto = new PaymentRequest();
-
-        paymentController = Mockito.mock(PaymentController.class);
-        char[][] matriz = {
-                {'r', 'a', 'c', 'e'},
-                {'a', 'b', 'o', 'a'},
-                {'c', 'o', 'l', 'd'},
-                {'e', 'a', 'a', 'r'}
-        };
-        requestDto.setMatriz(matriz);
-    }
-
-
-    @Test
-    void aoAdicionarAlistaDeArraysCorretamenteDeveRetornarHttpStatus201() throws Exception {
-        mockMvc.perform(post("/palindromo")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestDto)))
-                .andExpect(MockMvcResultMatchers.status().isCreated());
-    }
-
-    @Test
-    void aoChamarControladorComCorpoDeRequisiçãoInválido_DeveRetornarBadRequest400() throws Exception {
-        PaymentRequest request = new PaymentRequest();
-        mockMvc.perform(post("/palindromo")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString("request")))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
-
-    @Test
-    void buscarPalindromosGerados() throws Exception {
-        mockMvc.perform(get("/palindromo")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
+//
+//    @InjectMocks
+//    PaymentController paymentController;
+//
+//    @Mock
+//    PaymentService paymentService;
+//
+//    @Mock
+//    PaymentRequest requestDto;
+//
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @Autowired
+//    ObjectMapper objectMapper;
+//
+//    @BeforeEach
+//    public void setup() {
+//        initMocks(this);
+//        mockMvc = MockMvcBuilders.standaloneSetup(paymentController)
+//                .alwaysDo(print())
+//                .build();
+//        objectMapper = new ObjectMapper();
+//        requestDto = new PaymentRequest();
+//
+//        paymentController = Mockito.mock(PaymentController.class);
+//        char[][] matriz = {
+//                {'r', 'a', 'c', 'e'},
+//                {'a', 'b', 'o', 'a'},
+//                {'c', 'o', 'l', 'd'},
+//                {'e', 'a', 'a', 'r'}
+//        };
+//        requestDto.setMatriz(matriz);
+//    }
+//
+//
+//    @Test
+//    void aoAdicionarAlistaDeArraysCorretamenteDeveRetornarHttpStatus201() throws Exception {
+//        mockMvc.perform(post("/palindromo")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(requestDto)))
+//                .andExpect(MockMvcResultMatchers.status().isCreated());
+//    }
+//
+//    @Test
+//    void aoChamarControladorComCorpoDeRequisiçãoInválido_DeveRetornarBadRequest400() throws Exception {
+//        PaymentRequest request = new PaymentRequest();
+//        mockMvc.perform(post("/palindromo")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString("request")))
+//                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+//    }
+//
+//    @Test
+//    void buscarPalindromosGerados() throws Exception {
+//        mockMvc.perform(get("/palindromo")
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//    }
 }

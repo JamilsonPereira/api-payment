@@ -1,26 +1,26 @@
 package br.itau.payment.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 @Entity
-public class PaymentDomain {
+@Table(name = "payment_table")
+public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long payment_id;
 
-    private Long customer_id;
+    private Long customerId;
 
-    private BigDecimal value;
+    private BigDecimal value = BigDecimal.ZERO;
 
     private String description;
 
-    private OffsetDateTime dataPagamento;
+    private LocalDate datePayment = LocalDate.now();
 
     private String paymentMethod;
 
@@ -32,12 +32,12 @@ public class PaymentDomain {
         this.payment_id = payment_id;
     }
 
-    public Long getCustomer_id() {
-        return customer_id;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public BigDecimal getValue() {
@@ -56,12 +56,12 @@ public class PaymentDomain {
         this.description = description;
     }
 
-    public OffsetDateTime getDataPagamento() {
-        return dataPagamento;
+    public LocalDate getDatePayment() {
+        return datePayment;
     }
 
-    public void setDataPagamento(OffsetDateTime dataPagamento) {
-        this.dataPagamento = dataPagamento;
+    public void setDatePayment(LocalDate datePayment) {
+        this.datePayment = datePayment;
     }
 
     public String getPaymentMethod() {

@@ -1,13 +1,46 @@
 package br.itau.payment.dto;
 
-public class PaymentRequest {
-    char[][] matriz;
+import java.math.BigDecimal;
 
-    public char[][] getMatriz() {
-        return matriz;
+public class PaymentRequest {
+
+    private Long customer_id;
+
+    private BigDecimal value;
+
+    private String description;
+
+    private String paymentMethod;
+
+    public Long getCustomer_id() {
+        return customer_id;
     }
 
-    public void setMatriz(char[][] matriz) {
-        this.matriz = matriz;
+    public void setCustomer_id(Long customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

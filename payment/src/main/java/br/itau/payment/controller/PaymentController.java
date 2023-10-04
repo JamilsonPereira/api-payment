@@ -22,14 +22,14 @@ public class PaymentController {
     @ApiOperation(value = "Create payment")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionaArrayPalindromo(@RequestBody PaymentRequest palindromo) {
-     ;
+    public void createPayment(@RequestBody PaymentRequest payment) {
+        paymentService.createPay(payment);
     }
 
     @ApiOperation(value = "Busca uma lista com palindromos")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<PaymentResponse> buscarPalindromosGerados() {
-        return paymentService.buscarPalindromosNaBaseDeDados();
+        return paymentService.findAllPayment();
     }
 }
