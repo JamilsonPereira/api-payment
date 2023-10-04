@@ -6,6 +6,8 @@ public class PaymentRequest {
 
     private Long customer_id;
 
+    private Long debt_id;
+
     private BigDecimal value;
 
     private String description;
@@ -18,6 +20,14 @@ public class PaymentRequest {
 
     public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public Long getDebt_id() {
+        return debt_id;
+    }
+
+    public void setDebt_id(Long debt_id) {
+        this.debt_id = debt_id;
     }
 
     public BigDecimal getValue() {

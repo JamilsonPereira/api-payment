@@ -16,6 +16,8 @@ public class Payment implements Serializable {
 
     private Long customerId;
 
+    private Long debtId;
+
     private BigDecimal value = BigDecimal.ZERO;
 
     private String description;
@@ -38,6 +40,14 @@ public class Payment implements Serializable {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public Long getDebtId() {
+        return debtId;
+    }
+
+    public void setDebtId(Long debtId) {
+        this.debtId = debtId;
     }
 
     public BigDecimal getValue() {

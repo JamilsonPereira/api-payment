@@ -27,12 +27,13 @@ public class MapperService {
         return paymentResponses;
     }
 
-    public Payment mapperDtoToDomain(PaymentRequest request){
+    public Payment mapperDtoToDomain(PaymentRequest request) {
         Payment domain = new Payment();
         domain.setPaymentMethod(request.getPaymentMethod());
         domain.setCustomerId(request.getCustomer_id());
         domain.setDescription(request.getDescription());
         domain.setValue(request.getValue());
+        domain.setDebtId(request.getDebt_id());
 
         return domain;
     }

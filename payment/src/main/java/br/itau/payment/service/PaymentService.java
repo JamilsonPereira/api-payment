@@ -2,6 +2,7 @@ package br.itau.payment.service;
 
 import br.itau.payment.dto.PaymentRequest;
 import br.itau.payment.dto.PaymentResponse;
+import br.itau.payment.producer.KafkaProducer;
 import br.itau.payment.repository.PaymentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +20,14 @@ public class PaymentService {
     @Autowired
     private MapperService mapperService;
 
+    @Autowired
+    private KafkaProducer kafkaProducer;
+
     private static final Logger logger = LoggerFactory.getLogger(PaymentService.class);
 
     public void createPay(PaymentRequest pay){
         paymentRepository.save(mapperService.mapperDtoToDomain(pay));
+        kafkaProducer.send("payment", "key", pay.toString());
     }
 
     public List<PaymentResponse> findAllPayment(){
