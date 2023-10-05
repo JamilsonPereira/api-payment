@@ -29,7 +29,7 @@ public class PaymentController {
     @ApiOperation(value = "Search List historic with payments")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<PaymentResponse> buscarPalindromosGerados() {
+    public List<PaymentResponse> findAllPayments() {
         return paymentService.findAllPayment();
     }
 }
